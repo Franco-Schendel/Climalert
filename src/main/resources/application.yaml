@@ -1,0 +1,3 @@
+weather-api:
+  base-url: http://api.weatherapi.com/v1
+  api-key: EXAMPLE-API-KEY

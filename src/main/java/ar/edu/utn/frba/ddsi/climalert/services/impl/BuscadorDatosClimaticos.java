@@ -29,7 +29,7 @@ public class BuscadorDatosClimaticos implements BuscadorDatosClimaticosService {
         if(climaDataActual == null) return;
 
         DatosClimaticos datosClimaticos = mapClimaDataToDatosClimaticos(climaDataActual);
-
+        System.out.println("[BuscadorDatosClimaticos] Datos obtenidos: " + datosClimaticos);
         climaDataRepository.save(datosClimaticos);
     }
 
@@ -48,6 +48,7 @@ public class BuscadorDatosClimaticos implements BuscadorDatosClimaticosService {
     }
 
     private ClimaData buscarDatosClima() {
+        System.out.println("[BuscadorDatosClimaticos] Buscando datos...");
         URI uri = UriComponentsBuilder
                 .fromUriString(weatherProperties.getBaseUrl())
                 .path("/current.json")

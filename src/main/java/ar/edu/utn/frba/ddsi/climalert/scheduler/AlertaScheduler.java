@@ -1,10 +1,12 @@
 package ar.edu.utn.frba.ddsi.climalert.scheduler;
 
 import ar.edu.utn.frba.ddsi.climalert.services.AlertasService;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
+@EnableScheduling
 public class AlertaScheduler {
     private final AlertasService alertasService;
 

@@ -22,7 +22,15 @@ public class AlertasServiceImpl implements AlertasService {
         List<DatosClimaticos> datosClimaticosNoProcesados = climaDataRepository.findByProcesado(false);
         datosClimaticosNoProcesados.forEach(datosClimaticos -> {
             if(!datosClimaticos.esCritico()) return;
-            Alerta nuevaAlerta = new Alerta(null, datosClimaticos, "Mensaje de alerta", emailsDestinatarios);
+            Alerta nuevaAlerta = new Alerta(null,
+                    datosClimaticos,
+            "ALERTA\n" +
+                        "ID: " + datosClimaticos.getId() + "\n" +
+                        "La temperatura actual es de " + datosClimaticos.getTemperatura() + "°C. Y la humedad es del " + datosClimaticos.getHumedad() + " %\n" +
+                        "Pais: " + datosClimaticos.getPais() + "\n" +
+                        "Region: " + datosClimaticos.getRegion() + "\n" +
+                        "Ciudad: " + datosClimaticos.getCiudad() + "\n",
+                    emailsDestinatarios);
             System.out.println("Enviando alerta a destinatarios por datos " + datosClimaticos.getId());
         });
     }
